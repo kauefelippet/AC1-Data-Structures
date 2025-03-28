@@ -3,18 +3,18 @@ package models;
 import javax.swing.JOptionPane;
 
 /**
- *
  * @author bruno
+ * Modificado para lidar com Chamados - Kauê (247721)
  */
 public class ListaEncadeada {
-    NoSimples primeiro, ultimo;
-    int numero_nos = 0;
+    private NoSimples primeiro, ultimo;
+    private int numero_nos = 0;
 
-    ListaEncadeada() {
+    public ListaEncadeada() {
         primeiro = ultimo = null;
     }
 
-    void insereNo_fim(NoSimples novoNo) {
+    public void insereNo_fim(NoSimples novoNo) {
         novoNo.prox = null;
         if (primeiro == null)
             primeiro = novoNo;
@@ -24,7 +24,7 @@ public class ListaEncadeada {
         numero_nos++;
     }
 
-    void insereNo_inicio(NoSimples novoNo) {
+    public void insereNo_inicio(NoSimples novoNo) {
         novoNo.prox = primeiro;
         if (primeiro == null && ultimo == null) {
             ultimo = novoNo;
@@ -33,7 +33,7 @@ public class ListaEncadeada {
         numero_nos++;
     }
 
-    int ContarNos() {
+    public int contarNos() {
         int tamanho = 0;
         NoSimples temp_no = primeiro;
         while (temp_no != null) {
@@ -43,9 +43,9 @@ public class ListaEncadeada {
         return tamanho;
     }
 
-    void insereNo_posicao(NoSimples novoNo, int posicao) {
+    public void insereNo_posicao(NoSimples novoNo, int posicao) {
         NoSimples temp_no = primeiro;
-        int numero_nos = ContarNos();
+        int numero_nos = contarNos();
         int pos_aux;
         if (posicao == 0) {
             if (posicao <= numero_nos) {
@@ -65,12 +65,11 @@ public class ListaEncadeada {
         }
     }
 
-    NoSimples buscaNo(Object buscaValor) {
+    public NoSimples buscaNo(int id) {
         int i = 0;
         NoSimples temp_no = primeiro;
         while (temp_no != null) {
-            if (temp_no.valor.equals(buscaValor)) {
-                JOptionPane.showMessageDialog(null, "No " + temp_no.valor + " posição " + i);
+            if (temp_no.valor.getId() == id) {
                 return temp_no;
             }
             i++;
@@ -79,7 +78,7 @@ public class ListaEncadeada {
         return null;
     }
 
-    void excluiNo(Object valor) {
+    public void excluiNo(Object valor) {
         NoSimples temp_no = primeiro;
         NoSimples anterior_no = null;
         while (temp_no != null && !temp_no.valor.equals(valor)) {
@@ -99,13 +98,16 @@ public class ListaEncadeada {
             ultimo = anterior_no;
     }
 
-    void exibeLista() {
+    // Modificado para retornar uma String em vez de utilizar SOUT.
+    public String exibeLista() {
+        StringBuilder builder = new StringBuilder();
         NoSimples temp_no = primeiro;
         int i = 0;
         while (temp_no != null) {
-            System.out.println("Saida - Valor " + temp_no.valor + " posição " + i);
+            builder.append(temp_no.valor.toString()).append("\n");
             temp_no = temp_no.prox;
             i++;
         }
+        return builder.toString();
     }
 }

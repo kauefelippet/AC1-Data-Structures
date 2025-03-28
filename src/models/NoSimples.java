@@ -11,9 +11,13 @@ package models;
 public class NoSimples {
     Chamado valor;
     NoSimples prox;
-    NoSimples(Chamado ValorNo){
+    public NoSimples(Chamado ValorNo){
         valor = ValorNo;
         prox = null;
+    }
+
+    public Chamado getValor(){
+        return valor;
     }
  }
 

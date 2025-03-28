@@ -5,8 +5,8 @@ import javax.swing.*;
 public class Pilha {
     //Declarando os atributos da classe
     private int topo;
-    public int tamanho;
-    private Object[] vetor;
+    public final int tamanho;
+    private final Object[] vetor;
 
     public Pilha(int tam) {
         topo = -1; //Marca que a pilha está vazia
@@ -43,15 +43,13 @@ public class Pilha {
         return valorDesempilhado;
     }
 
-public String ExibePilha() {
-    StringBuilder builder = new StringBuilder();
-    if (vazia()) {
-        builder.append("PILHA VAZIA!\n");
-    } else {
-        for (int i = topo; i >= 0; i--) {
-            builder.append("Elemento ").append(vetor[i]).append(" - posição ").append(i).append("\n");
+    public String ExibePilha() {
+        StringBuilder builder = new StringBuilder();
+        if (!vazia()) {
+            for (int i = topo; i >= 0; i--) {
+                builder.append(vetor[i]).append("\n");
+            }
         }
+        return builder.toString();
     }
-    return builder.toString();
-}
 }
