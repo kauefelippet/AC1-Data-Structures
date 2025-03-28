@@ -15,7 +15,7 @@ public class Main {
 
         while (opcao != 5) {
             opcao = Integer.parseInt(JOptionPane.showInputDialog("""
-                    1 - Criar chamado\s
+                    1 - Criar chamado
                     2 - Atender chamado
                     3 - Resolver chamado
                     4 - Exibir todos os chamados
@@ -55,7 +55,7 @@ public class Main {
                     }
 
                     NoSimples noChamado = emAtendimento.buscaNo(Integer.parseInt(JOptionPane.showInputDialog("Digite o número do chamado a ser resolvido:")));
-                    Chamado chamado = null;
+                    Chamado chamado;
                     if (noChamado == null) {
                         JOptionPane.showMessageDialog(null, "O chamado informado não existe ou não está em atendimento!");
                         break;
@@ -82,6 +82,5 @@ public class Main {
                 default -> JOptionPane.showMessageDialog(null, "Opção inválida!");
             }
         }
-
     }
 }

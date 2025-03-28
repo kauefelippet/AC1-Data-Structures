@@ -65,6 +65,7 @@ public class ListaEncadeada {
         }
     }
 
+    // Modificado para buscar o nó pelo Id do Chamado.
     public NoSimples buscaNo(int id) {
         int i = 0;
         NoSimples temp_no = primeiro;
